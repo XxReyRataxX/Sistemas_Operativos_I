@@ -191,6 +191,35 @@ int my_stack_purge(struct my_stack *stack){
 
     return bytes;
 }
+struct my_stack *my_stack_init (int size){
+    //DECLARACIONES
+    //pila que devolveremos
+
+struct my_stack *pila=  (struct my_stack *) malloc(sizeof(struct my_stack));
+    //ACCIONES
+    //ponemos el top a nulo
+pila->top=NULL;
+    //ponemos el tamaño al parámetro 
+pila->size=size;
+
+return pila;
+
+}
+
+int my_stack_push (struct my_stack *stack, void *data){
+    if ((stack!=NULL)&&(stack->size>0)){
+    struct my_stack_node *nodo=  (struct my_stack_node *) malloc(sizeof(struct my_stack_node));
+     nodo->data=data;
+
+     stack->top=nodo;
+   
+    return 0;
+
+    }else {
+        return 1;
+    }
+
+}
 struct my_stack *my_stack_read(char *filename);
 
 int my_stack_write(struct my_stack *stack, char *filename);
