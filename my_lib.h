@@ -117,9 +117,33 @@ struct my_stack {   // pila
 };  
 
 //declaraciones funciones gestor de pila
-struct my_stack *my_stack_init(int size);
+struct my_stack *my_stack_init (int size){
+    //DECLARACIONES
+    //pila que devolveremos
 
-int my_stack_push(struct my_stack *stack, void *data);
+struct my_stack *pila=  (struct my_stack *) malloc(sizeof(struct my_stack));
+    //ACCIONES
+    //ponemos el top a nulo
+pila->top=NULL;
+    //ponemos el tamaño al parámetro 
+pila->size=size;
+
+return pila;
+
+}
+
+int my_stack_push (struct my_stack *stack, void *data){
+    if ((stack!=NULL)&&(stack->size>0)){
+    struct my_stack_node *nodo=  (struct my_stack_node *) malloc(sizeof(struct my_stack_node));
+     nodo->data=data;
+
+     stack->top=nodo;
+   
+    return 0;
+
+    }else {
+        return 1;
+    }
 
 void *my_stack_pop(struct my_stack *stack) {
     if (stack == NULL || stack->top == NULL) {
