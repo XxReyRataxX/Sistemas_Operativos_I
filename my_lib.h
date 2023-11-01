@@ -133,28 +133,31 @@ struct my_stack {   // pila
     struct my_stack_node *top;  // apunta al nodo de la parte superior
 };  
 
-//declaraciones funciones gestor de pila
 struct my_stack *my_stack_init (int size){
     //DECLARACIONES
-    //pila que devolveremos
-
+   
+ //declaramos la pila que vamos a inicializar y guardamos espacio para ella en la memoria.
 struct my_stack *pila=  (struct my_stack *) malloc(sizeof(struct my_stack));
     //ACCIONES
     //ponemos el top a nulo
 pila->top=NULL;
     //ponemos el tamaño al parámetro 
 pila->size=size;
-
+//devolvemos la pila que hemos inicializado
 return pila;
 
 }
 
 
 int my_stack_push (struct my_stack *stack, void *data){
+    //para meter un nuevo nodo a la pila debemos mirar si la pila
+    //está inicializada
     if ((stack!=NULL)&&(stack->size>0)){
+        //declaramos un nodo auxiliar y guardamos espacio para él en la memoria
     struct my_stack_node *nodo=  (struct my_stack_node *) malloc(sizeof(struct my_stack_node));
+    //asignamos el dato pasado por parámetro al parámetro data del nodo auxiliar
      nodo->data=data;
-
+    //hacemos que el nuevo top de la pila sea el último nodo introducido(es decir el pasado por parámetro)
      stack->top=nodo;
    
     return 0;
